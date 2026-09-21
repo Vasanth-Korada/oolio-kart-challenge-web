@@ -3,9 +3,8 @@ import type { ApiErrorBody, Order, PlaceOrderRequest, Product } from "./types";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080";
 const API_KEY = import.meta.env.VITE_API_KEY ?? "apitest";
 
-// ApiRequestError carries the backend's structured error body (when
-// present) so the UI can show the actual validation message from
-// internal/httpapi/errors.go, not a generic "request failed".
+// Carries the backend's structured error body so the UI can show its
+// actual validation message instead of a generic failure string.
 export class ApiRequestError extends Error {
   readonly status: number;
   readonly body: ApiErrorBody | null;
@@ -32,8 +31,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     try {
       body = (await res.json()) as ApiErrorBody;
     } catch {
-      // Response had no JSON body — body stays null and the generic
-      // status-based message in ApiRequestError is used instead.
+      // no JSON body — body stays null
     }
     throw new ApiRequestError(res.status, body);
   }

@@ -27,9 +27,7 @@ export function Cart() {
       clear();
       setCouponCode("");
     } catch (err) {
-      // ApiRequestError.message carries the backend's actual validation
-      // message (e.g. "coupon code is invalid") rather than a generic
-      // failure string.
+      // ApiRequestError carries the backend's actual validation message.
       setError(err instanceof ApiRequestError ? err.message : "Something went wrong placing your order.");
     } finally {
       setSubmitting(false);
