@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ApiRequestError, placeOrder } from "../api/client";
 import type { Order } from "../api/types";
 import { useCart } from "../context/CartContext";
+import { formatCurrency } from "../utils/format";
 import { OrderConfirmation } from "./OrderConfirmation";
 
 export function Cart() {
@@ -50,7 +51,7 @@ export function Cart() {
                 <div className="cart__line-info">
                   <span className="cart__line-name">{line.product.name}</span>
                   <span className="cart__line-price">
-                    ${(line.product.price * line.quantity).toFixed(2)}
+                    {formatCurrency(line.product.price * line.quantity)}
                   </span>
                 </div>
                 <div className="cart__line-controls">
@@ -81,7 +82,7 @@ export function Cart() {
 
           <div className="cart__subtotal">
             <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>{formatCurrency(subtotal)}</span>
           </div>
 
           <label className="cart__coupon">

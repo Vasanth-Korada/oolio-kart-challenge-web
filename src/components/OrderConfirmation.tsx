@@ -1,4 +1,5 @@
 import type { Order } from "../api/types";
+import { formatCurrency } from "../utils/format";
 
 export function OrderConfirmation({ order, onDismiss }: { order: Order; onDismiss: () => void }) {
   return (
@@ -15,7 +16,7 @@ export function OrderConfirmation({ order, onDismiss }: { order: Order; onDismis
                   {product?.name ?? `Product ${item.productId}`} × {item.quantity}
                 </span>
                 {product && (
-                  <span className="cart__line-price">${(product.price * item.quantity).toFixed(2)}</span>
+                  <span className="cart__line-price">{formatCurrency(product.price * item.quantity)}</span>
                 )}
               </div>
             </li>
@@ -26,17 +27,17 @@ export function OrderConfirmation({ order, onDismiss }: { order: Order; onDismis
       <div className="order-totals">
         <div className="order-totals__row">
           <span>Subtotal</span>
-          <span>${order.subtotal.toFixed(2)}</span>
+          <span>{formatCurrency(order.subtotal)}</span>
         </div>
         {order.discount > 0 && (
           <div className="order-totals__row order-totals__row--discount">
             <span>Coupon {order.couponCode} (5% off)</span>
-            <span>−${order.discount.toFixed(2)}</span>
+            <span>−{formatCurrency(order.discount)}</span>
           </div>
         )}
         <div className="order-totals__row order-totals__row--total">
           <span>Total</span>
-          <span>${order.total.toFixed(2)}</span>
+          <span>{formatCurrency(order.total)}</span>
         </div>
       </div>
 
