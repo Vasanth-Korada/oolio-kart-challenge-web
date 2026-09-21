@@ -27,7 +27,6 @@ export function Cart() {
       clear();
       setCouponCode("");
     } catch (err) {
-      // ApiRequestError carries the backend's actual validation message.
       setError(err instanceof ApiRequestError ? err.message : "Something went wrong placing your order.");
     } finally {
       setSubmitting(false);

@@ -3,8 +3,6 @@ import type { ApiErrorBody, Order, PlaceOrderRequest, Product } from "./types";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8080";
 const API_KEY = import.meta.env.VITE_API_KEY ?? "apitest";
 
-// Carries the backend's structured error body so the UI can show its
-// actual validation message instead of a generic failure string.
 export class ApiRequestError extends Error {
   readonly status: number;
   readonly body: ApiErrorBody | null;
@@ -31,7 +29,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     try {
       body = (await res.json()) as ApiErrorBody;
     } catch {
-      // no JSON body — body stays null
+      // ignore: no JSON body
     }
     throw new ApiRequestError(res.status, body);
   }

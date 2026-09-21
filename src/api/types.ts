@@ -1,6 +1,3 @@
-// Mirrors the OpenAPI spec's Product/Order schemas exactly — see
-// api/openapi.yaml in the backend repo (oolio-kart-challenge).
-
 export interface Product {
   id: string;
   name: string;
@@ -29,7 +26,6 @@ export interface Order {
   products: Product[];
 }
 
-// Matches the backend's ApiResponse error envelope (internal/httpapi/errors.go).
 export interface ApiErrorBody {
   code: number;
   type: string;
