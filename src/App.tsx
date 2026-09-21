@@ -1,5 +1,6 @@
 import { CartProvider } from "./context/CartContext";
 import { ProductList } from "./components/ProductList";
+import { Cart } from "./components/Cart";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         </header>
         <main className="app-main">
           <ProductList />
+          <Cart />
         </main>
       </div>
     </CartProvider>
