@@ -1,32 +1,49 @@
-# React + TypeScript + Vite
+# Oolio Kart — Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A minimal React + TypeScript frontend for the
+[oolio-kart-challenge](https://github.com/Vasanth-Korada/oolio-kart-challenge)
+backend: browse products, build a cart, and check out with an optional
+coupon code.
 
-Currently, two official plugins are available:
+Kept intentionally small and in its own repo — the assignment's focus and
+grading criteria are the Go API, not the UI ("feel free to explore React"
+is explicitly optional there).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Running it
 
-## React Compiler
+Requires the [backend](https://github.com/Vasanth-Korada/oolio-kart-challenge)
+running (via `make docker-up` in that repo) on `http://localhost:8080`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+cp .env.example .env   # only needed if the backend isn't on the default URL/key
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Opens on `http://localhost:5173`.
+
+## Configuration
+
+Two environment variables, both optional (see `.env.example`):
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `VITE_API_BASE_URL` | `http://localhost:8080` | Backend origin |
+| `VITE_API_KEY` | `apitest` | Sent as the `api_key` header on `POST /order` |
+
+## Structure
+
+```
+src/
+  api/          - typed client + request/response types mirroring the OpenAPI spec
+  context/      - cart state (React context, in-memory)
+  components/   - ProductList, ProductCard, Cart, OrderConfirmation
+```
+
+## Try it
+
+- Add a few items, then use coupon code `HAPPYHRS` or `FIFTYOFF` (valid) vs.
+  `SUPER100` (invalid) — these are verified against the backend's real,
+  313M-line coupon index, not mocked.
+- Errors from the backend (invalid coupon, unknown product, etc.) surface as
+  the actual message from its `{code, type, message}` error body.
