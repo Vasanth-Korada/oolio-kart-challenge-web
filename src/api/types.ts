@@ -24,6 +24,10 @@ export interface Order {
   id: string;
   items: OrderItemResponse[];
   products: Product[];
+  couponCode?: string;
+  subtotal: number;
+  discount: number;
+  total: number;
 }
 
 export interface ApiErrorBody {

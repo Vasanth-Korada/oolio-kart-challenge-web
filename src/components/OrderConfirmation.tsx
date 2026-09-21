@@ -22,6 +22,24 @@ export function OrderConfirmation({ order, onDismiss }: { order: Order; onDismis
           );
         })}
       </ul>
+
+      <div className="order-totals">
+        <div className="order-totals__row">
+          <span>Subtotal</span>
+          <span>${order.subtotal.toFixed(2)}</span>
+        </div>
+        {order.discount > 0 && (
+          <div className="order-totals__row order-totals__row--discount">
+            <span>Coupon {order.couponCode} (5% off)</span>
+            <span>−${order.discount.toFixed(2)}</span>
+          </div>
+        )}
+        <div className="order-totals__row order-totals__row--total">
+          <span>Total</span>
+          <span>${order.total.toFixed(2)}</span>
+        </div>
+      </div>
+
       <button type="button" onClick={onDismiss}>
         Order more
       </button>

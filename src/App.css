@@ -192,6 +192,30 @@ button.secondary {
   font-size: 0.95rem;
 }
 
+.order-totals {
+  border-top: 1px solid #e2e2e2;
+  margin: 0.5rem 0 1rem;
+}
+
+.order-totals__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+}
+
+.order-totals__row--discount {
+  color: #2e7d32;
+  font-size: 0.9rem;
+}
+
+.order-totals__row--total {
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-top: 1px solid #e2e2e2;
+  padding-top: 0.5rem;
+  margin-top: 0.25rem;
+}
+
 .order-confirmation__id {
   font-family: ui-monospace, Consolas, monospace;
   font-size: 0.85rem;
