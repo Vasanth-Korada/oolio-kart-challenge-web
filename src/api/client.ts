@@ -7,12 +7,14 @@ const API_KEY = import.meta.env.VITE_API_KEY ?? "apitest";
 // present) so the UI can show the actual validation message from
 // internal/httpapi/errors.go, not a generic "request failed".
 export class ApiRequestError extends Error {
-  constructor(
-    public readonly status: number,
-    public readonly body: ApiErrorBody | null,
-  ) {
+  readonly status: number;
+  readonly body: ApiErrorBody | null;
+
+  constructor(status: number, body: ApiErrorBody | null) {
     super(body?.message ?? `Request failed with status ${status}`);
     this.name = "ApiRequestError";
+    this.status = status;
+    this.body = body;
   }
 }
 
