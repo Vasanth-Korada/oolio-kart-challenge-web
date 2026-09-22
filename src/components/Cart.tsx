@@ -42,7 +42,7 @@ export function Cart() {
       </h2>
 
       {lines.length === 0 ? (
-        <p className="status-message">Your cart is empty — add something from the menu.</p>
+        <p className="status-message">Your cart is empty. Add something from the menu.</p>
       ) : (
         <>
           <ul className="cart__lines">

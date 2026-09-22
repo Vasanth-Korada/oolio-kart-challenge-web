@@ -1,18 +1,16 @@
-# Oolio Kart — Web
+# Oolio Kart: Web
 
-A minimal React + TypeScript frontend for the
-[oolio-kart-challenge](https://github.com/Vasanth-Korada/oolio-kart-challenge)
-backend: browse products, build a cart, and check out with an optional
-coupon code.
+A minimal React + TypeScript frontend for the [oolio-kart-challenge](https://github.com/Vasanth-Korada/oolio-kart-challenge) backend.
 
-Kept intentionally small and in its own repo — the assignment's focus and
-grading criteria are the Go API, not the UI ("feel free to explore React"
-is explicitly optional there).
+- Browse products
+- Build a cart
+- Check out with an optional coupon code
 
-## Running it
+Kept intentionally small and in its own repo. The assignment's focus and grading criteria are the Go API, not the UI ("feel free to explore React" is explicitly optional there).
 
-Requires the [backend](https://github.com/Vasanth-Korada/oolio-kart-challenge)
-running (via `make docker-up` in that repo) on `http://localhost:8080`.
+## Running It
+
+Requires the [backend](https://github.com/Vasanth-Korada/oolio-kart-challenge) running (via `make docker-up` in that repo) on `http://localhost:8080`.
 
 ```bash
 npm install
@@ -37,13 +35,12 @@ Two environment variables, both optional (see `.env.example`):
 src/
   api/          - typed client + request/response types mirroring the OpenAPI spec
   context/      - cart state (React context, in-memory)
+  utils/        - shared formatting helpers (currency)
   components/   - ProductList, ProductCard, Cart, OrderConfirmation
 ```
 
-## Try it
+## Try It
 
-- Add a few items, then use coupon code `HAPPYHRS` or `FIFTYOFF` (valid) vs.
-  `SUPER100` (invalid) — these are verified against the backend's real,
-  313M-line coupon index, not mocked.
-- Errors from the backend (invalid coupon, unknown product, etc.) surface as
-  the actual message from its `{code, type, message}` error body.
+- Add a few items, then use coupon code `HAPPYHRS` or `FIFTYOFF` (valid) versus `SUPER100` (invalid). These are verified against the backend's real, 313M-line coupon index, not mocked.
+- A valid coupon shows a real 5% discount breakdown on the confirmation screen: subtotal, discount, total.
+- Errors from the backend (invalid coupon, unknown product, and so on) surface as the actual message from its `{code, type, message}` error body.
