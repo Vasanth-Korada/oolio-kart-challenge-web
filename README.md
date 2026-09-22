@@ -8,6 +8,8 @@ A minimal React + TypeScript frontend for the [oolio-kart-challenge](https://git
 
 Kept intentionally small and in its own repo. The assignment's focus and grading criteria are the Go API, not the UI ("feel free to explore React" is explicitly optional there).
 
+![Oolio Kart UI: product grid with images, order confirmed with a 5% coupon discount applied to the total](docs/screenshot.png)
+
 ## Running It
 
 Requires the [backend](https://github.com/Vasanth-Korada/oolio-kart-challenge) running (via `make docker-up` in that repo) on `http://localhost:8080`.
