@@ -58,6 +58,13 @@
   background: #fff;
 }
 
+.product-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
 .product-card__category {
   font-size: 0.75rem;
   text-transform: uppercase;

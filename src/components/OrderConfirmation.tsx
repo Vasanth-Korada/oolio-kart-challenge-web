@@ -29,10 +29,10 @@ export function OrderConfirmation({ order, onDismiss }: { order: Order; onDismis
           <span>Subtotal</span>
           <span>{formatCurrency(order.subtotal)}</span>
         </div>
-        {order.discount > 0 && (
+        {order.discounts > 0 && (
           <div className="order-totals__row order-totals__row--discount">
             <span>Coupon {order.couponCode} (5% off)</span>
-            <span>−{formatCurrency(order.discount)}</span>
+            <span>−{formatCurrency(order.discounts)}</span>
           </div>
         )}
         <div className="order-totals__row order-totals__row--total">

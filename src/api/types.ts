@@ -1,8 +1,16 @@
+export interface ProductImage {
+  thumbnail: string;
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
 export interface Product {
   id: string;
   name: string;
   price: number;
   category: string;
+  image: ProductImage;
 }
 
 export interface OrderItemRequest {
@@ -26,7 +34,7 @@ export interface Order {
   products: Product[];
   couponCode?: string;
   subtotal: number;
-  discount: number;
+  discounts: number;
   total: number;
 }
 

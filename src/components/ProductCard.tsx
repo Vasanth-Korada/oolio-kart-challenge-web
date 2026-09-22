@@ -7,6 +7,7 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="product-card">
+      <img className="product-card__image" src={product.image.thumbnail} alt={product.name} loading="lazy" />
       <div className="product-card__category">{product.category}</div>
       <h3 className="product-card__name">{product.name}</h3>
       <div className="product-card__footer">
